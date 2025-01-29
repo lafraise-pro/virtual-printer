@@ -76,62 +76,19 @@ namespace pdfforge.PDFCreator.UI.Presentation.Assistants.Update
 
         public async Task UpdateCheckAsync(bool checkNecessity)
         {
-            var eventArgs = new UpdateEventArgs();
-            if (UpdateProcedureIsRunning)
-            {
-                return;
-            }
-
-            UpdateProcedureIsRunning = true;
-
-            try
-            {
-                await Update(eventArgs, checkNecessity);
-            }
-            catch (Exception e)
-            {
-                _logger.Error("Exception in UpdateProcedure:\r\n" + e.Message);
-            }
-
             UpdateProcedureIsRunning = false;
         }
 
         public bool IsTimeForNextUpdate()
         {
-            if (_showUpdateDuringSession || _isTimeForNextUpdate)
-                return true;
-
-            if (UpdateInterval == UpdateInterval.Never)
-            {
-                _logger.Debug("Automatic UpdateCheck is disabled");
-                return false;
-            }
-
-            if (DateTime.Now < NextUpdate)
-            {
-                _logger.Debug("Update period did not pass. Next Update is set to: " + NextUpdate);
-                return false;
-            }
-
-            _isTimeForNextUpdate = true;
-            return true;
+            _isTimeForNextUpdate = false;
+            return false;
         }
 
         public bool UpdateShouldBeShown()
         {
-            if (!IsTimeForNextUpdate())
-                return false;
-
-            SetNewUpdateTime();
-
-            if (!IsUpdateAvailable() || !VersionShouldNotBeSkipped(true, _onlineVersionHelper.GetOnlineVersion().Version))
-                return false;
-
-            _logger.Debug("Update period has passed (set to: " + NextUpdate + ")");
-
-            _showUpdateDuringSession = true;
-
-            return true;
+            _showUpdateDuringSession = false;
+            return false;
         }
 
         public void ShowLater()
@@ -144,42 +101,7 @@ namespace pdfforge.PDFCreator.UI.Presentation.Assistants.Update
 
         private async Task Update(UpdateEventArgs eventArgs, bool checkNecessity)
         {
-            if (!IsTimeForNextUpdate())
-            {
-                return;
-            }
-
-            IApplicationVersion onlineVersion = await _onlineVersionHelper.LoadOnlineVersionAsync();
-
-            if (checkNecessity)
-            {
-                if (!UpdateShouldBeShown())
-                    return;
-            }
-
-            _logger.Debug("Start UpdateCheck");
-
-            var thisVersion = _versionHelper.ApplicationVersion;
-
-            if (onlineVersion == null)
-            {
-                _logger.Error("OnlineVersion not available");
-                return;
-            }
-
-            if (thisVersion.CompareTo(onlineVersion.Version) < 0 && VersionShouldNotBeSkipped(checkNecessity, onlineVersion.Version))
-            {
-                _logger.Info("New Version available");
-                _eventAggregator.GetEvent<SetShowUpdateEvent>().Publish(true);
-                _eventAggregator.GetEvent<ShowUpdateInteractionEvent>().Publish();
-            }
-
-            if (eventArgs.SkipVersion)
-            {
-                SetSkipVersionInRegistry(onlineVersion.Version);
-            }
-
-            _logger.Info("NextUpdate dated to " + NextUpdate);
+            return;
         }
 
         private bool VersionShouldNotBeSkipped(bool checkNecessity, Version onlineVersion)
@@ -228,25 +150,12 @@ namespace pdfforge.PDFCreator.UI.Presentation.Assistants.Update
 
         public async Task<bool> IsUpdateAvailableAsync(bool checkNecessity)
         {
-            if (checkNecessity && !UpdateShouldBeShown())
-                return false;
-
-            NextUpdate = DateTime.Now;
-            SetSkipVersionInRegistry(_versionHelper.ApplicationVersion);
-            await _onlineVersionHelper.LoadOnlineVersionAsync(true);
-            _eventAggregator.GetEvent<ShowUpdateInteractionEvent>().Publish();
-            return IsUpdateAvailable();
+            return false;
         }
 
         public bool IsUpdateAvailable()
         {
-            if (_onlineVersionHelper.GetOnlineVersion() == null)
-                return false;
-
-            var thisVersion = _versionHelper.ApplicationVersion;
-
-            var updateAvailable = thisVersion.CompareTo(_onlineVersionHelper.GetOnlineVersion().Version) < 0;
-            return updateAvailable;
+            return false;
         }
     }
 }

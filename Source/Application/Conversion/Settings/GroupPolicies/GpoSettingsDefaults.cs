@@ -2,34 +2,34 @@
 {
     public class GpoSettingsDefaults : IGpoSettings
     {
-        public bool DisableApplicationSettings => false;
-        public bool DisableDebugTab => false;
+        public bool DisableApplicationSettings => true;
+        public bool DisableDebugTab => true;
         public bool DisablePrinterTab => false;
         public bool DisableProfileManagement => false;
-        public bool DisableTitleTab => false;
-        public bool DisableHistory => false;
-        public bool DisableAccountsTab => false;
-        public bool DisableUsageStatistics => false;
-        public bool DisableRssFeed => false;
-        public bool DisableTips => false;
-        public bool HideLicenseTab => false;
-        public bool HidePdfArchitectInfo => false;
+        public bool DisableTitleTab => true;
+        public bool DisableHistory => true;
+        public bool DisableAccountsTab => true;
+        public bool DisableUsageStatistics => true;
+        public bool DisableRssFeed => true;
+        public bool DisableTips => true;
+        public bool HideLicenseTab => true;
+        public bool HidePdfArchitectInfo => true;
         
         public string Language => null;
         public string UpdateInterval => null;
         public string SharedSettingsFilename => "settings";
         public int? HotStandbyMinutes => null;
 
-        public bool LoadSharedAppSettings => false;
-        public bool LoadSharedProfiles => false;
+        public bool LoadSharedAppSettings => true;
+        public bool LoadSharedProfiles => true;
         public bool AllowUserDefinedProfiles => true;
 
         public bool AllowSharedProfilesEditing => false;
-        public bool DisableLicenseExpirationReminder => false;
+        public bool DisableLicenseExpirationReminder => true;
 
         public string PageSize => null;
         public string PageOrientation => null;
 
-        public bool HideFeedbackForm => false;
+        public bool HideFeedbackForm => true;
     }
 }

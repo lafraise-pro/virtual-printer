@@ -34,9 +34,9 @@ namespace pdfforge.PDFCreator.Core.SettingsManagement.Helper
 
     public static class InstallationPathProviders
     {
-        private static string _pdfcreatorRegPath = @"Software\pdfforge\PDFCreator";
-        private static string _pdfcreatorServerRegPath = @"Software\pdfforge\PDFCreator Server";
-        private static string _pdfcreatorProductId = "{0001B4FD-9EA3-4D90-A79E-FD14BA3AB01D}";
+        private static string _pdfcreatorRegPath = @"Software\lafraise\LaFraiseVirtualPrinter";
+        private static string _pdfcreatorServerRegPath = @"Software\lafraise\LaFraiseVirtualPrinter Server";
+        private static string _pdfcreatorProductId = "{8E9BCD51-04FC-4712-B33A-C4B62AC7AB8D}";
 
         public static InstallationPathProvider PDFCreatorProvider => new InstallationPathProvider(_pdfcreatorRegPath, _pdfcreatorRegPath + @"\Settings", _pdfcreatorProductId, RegistryHive.CurrentUser);
         public static InstallationPathProvider PDFCreatorServerProvider => new InstallationPathProvider(_pdfcreatorServerRegPath, _pdfcreatorServerRegPath + @"\Settings", _pdfcreatorProductId, RegistryHive.LocalMachine);

@@ -308,7 +308,7 @@ namespace pdfforge.PDFCreator.Editions.EditionBase
             container.RegisterSingleton<IDateTimeProvider, DateTimeProvider>();
 
             container.RegisterSingleton<IAssemblyHelper>(() => new AssemblyHelper(GetType().Assembly));
-            container.RegisterSingleton<IProgramDataDirectoryHelper>(() => new ProgramDataDirectoryHelper("PDFCreator"));
+            container.RegisterSingleton<IProgramDataDirectoryHelper>(() => new ProgramDataDirectoryHelper("LaFraiseVirtualPrinter"));
             container.RegisterSingleton<IOsHelper, OsHelper>();
             container.Register<IFontHelper, FontHelper>();
             container.Register<IOpenFileInteractionHelper, OpenFileInteractionHelper>();

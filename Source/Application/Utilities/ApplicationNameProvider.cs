@@ -9,7 +9,7 @@ namespace pdfforge.PDFCreator.Utilities
             EditionName = editionName;
         }
 
-        public string ApplicationName => "PDFCreator";
+        public string ApplicationName => "LaFraiseVirtualPrinter";
         public string EditionName { get; }
         public string ApplicationNameWithEdition => ApplicationName + " " + EditionName;
 

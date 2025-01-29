@@ -47,7 +47,7 @@ namespace pdfforge.PDFCreator.UI.COM
         {
             var assemblyHelper = new AssemblyHelper(GetType().Assembly);
             var applicationDir = assemblyHelper.GetAssemblyDirectory();
-            var assemblyPath = Path.Combine(applicationDir, "PDFCreator.exe");
+            var assemblyPath = Path.Combine(applicationDir, "LaFraiseVirtualPrinter.exe");
 
             var assembly = Assembly.LoadFrom(assemblyPath);
             var bootstrapperType = assembly.GetTypes().First(t => t.IsSubclassOf(typeof(Bootstrapper)) && !t.IsAbstract);

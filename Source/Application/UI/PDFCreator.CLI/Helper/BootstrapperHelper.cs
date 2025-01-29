@@ -15,12 +15,12 @@ namespace pdfforge.PDFCreator.UI.CLI.Helper
         {
             var assemblyHelper = new AssemblyHelper(Assembly.GetExecutingAssembly());
             var applicationDir = assemblyHelper.GetAssemblyDirectory();
-            var assemblyPath = Path.Combine(applicationDir, "PDFCreator.exe");
+            var assemblyPath = Path.Combine(applicationDir, "LaFraiseVirtualPrinter.exe");
 
             if (!File.Exists(assemblyPath) && Debugger.IsAttached)
             {
                 var editionDir = Path.GetFullPath(Path.Combine(applicationDir, @"..\..\..\..\Editions\PDFCreator\bin\Debug"));
-                assemblyPath = Path.Combine(editionDir, "PDFCreator.exe");
+                assemblyPath = Path.Combine(editionDir, "LaFraiseVirtualPrinter.exe");
             }
 
             if (!File.Exists(assemblyPath))

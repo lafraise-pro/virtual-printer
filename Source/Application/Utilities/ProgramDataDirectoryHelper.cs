@@ -19,7 +19,8 @@ namespace pdfforge.PDFCreator.Utilities
 
         public string GetDir()
         {
-            var pdfforgeProgramData = @"%ProgramData%\pdfforge\";
+            var pdfforgeProgramData = @"%ProgramData%\lafraise\";
+
             var applicationProgramData = PathSafe.Combine(pdfforgeProgramData, _applicationName);
 
             return Environment.ExpandEnvironmentVariables(applicationProgramData);

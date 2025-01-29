@@ -22,12 +22,12 @@ namespace pdfforge.PDFCreator.UI.Presentation.Helper
 
         public EditionHelper(Edition edition, EncryptionLevel encryptionLevel = EncryptionLevel.Aes256Bit, bool alwaysUsePdfArchitect = true)
         {
-            IsFreeEdition = edition == Edition.Free;
+            IsFreeEdition = false;
             IsServer = edition == Edition.Server;
             IsCustom = edition == Edition.Custom;
             IsTerminalServer = edition == Edition.TerminalServer;
             EncryptionLevel = encryptionLevel;
-            AlwaysUsePdfArchitect = alwaysUsePdfArchitect;
+            AlwaysUsePdfArchitect = false;
         }
     }
 }

@@ -6,12 +6,12 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("PDFCreator")]
-[assembly: AssemblyDescription("PDFCreator - Your OpenSource PDF Solution")]
+[assembly: AssemblyTitle("Imprimante Virtuelle LaFraise")]
+[assembly: AssemblyDescription("Imprimez vos devis directement vers LaFraise")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Avanquest pdfforge GmbH")]
-[assembly: AssemblyProduct("PDFCreator")]
-[assembly: AssemblyCopyright("Copyright Avanquest pdfforge GmbH 2024")]
+[assembly: AssemblyCompany("La Fraise Pro SAS")]
+[assembly: AssemblyProduct("Imprimante Virtuelle LaFraise")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

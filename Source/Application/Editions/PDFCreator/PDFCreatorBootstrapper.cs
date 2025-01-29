@@ -36,12 +36,12 @@ namespace pdfforge.PDFCreator.Editions.PDFCreator
 {
     public class PDFCreatorBootstrapper : Bootstrapper
     {
-        protected override string EditionName => "Free";
+        protected override string EditionName => "LaFraise";
         protected override Color EditionHighlightColor => Color.FromRgb(215, 40, 40);
         protected override bool HideLicensing => true;
-        protected override string BannerProductName => "pdfcreator";
+        protected override string BannerProductName => "lafraisevirtualprinter";
 
-        protected override EditionHelper EditionHelper => new EditionHelper(Edition.Free, EncryptionLevel.Aes128Bit, false);
+        protected override EditionHelper EditionHelper => new EditionHelper(Edition.Professional, EncryptionLevel.Aes128Bit, false);
 
         protected override void RegisterDirectImageConversion(Container container)
         {
@@ -56,7 +56,7 @@ namespace pdfforge.PDFCreator.Editions.PDFCreator
         {
             container.RegisterSingleton<IBaseSettingsBuilder, DefaultBaseSettingsBuilder>();
             container.RegisterSingleton<ISettingsLoader, PDFCreatorSettingsLoader>();
-            container.RegisterSingleton<ISharedSettingsLoader, FreeSharedSettingsLoader>();
+            container.RegisterSingleton<ISharedSettingsLoader, SharedSettingsLoader>();
         }
 
         protected override void RegisterUpdateAssistant(Container container)
@@ -74,7 +74,7 @@ namespace pdfforge.PDFCreator.Editions.PDFCreator
 
         protected override void RegisterJobBuilder(Container container)
         {
-            container.Register<IJobBuilder, JobBuilderFree>();
+            container.Register<IJobBuilder, JobBuilderProfessional>();
         }
 
         protected override void RegisterActivationHelper(Container container)

@@ -24,13 +24,13 @@ namespace pdfforge.PDFCreator.UI.CLI.CommandExecutors
 
         public void InitializeDependencies()
         {
-            _launcher = new ApplicationLauncher("PDFCreator.exe", InstallationPathProviders.PDFCreatorProvider);
+            _launcher = new ApplicationLauncher("LaFraiseVirtualPrinter.exe", InstallationPathProviders.PDFCreatorProvider);
         }
 
         public CheckResult IsExecutable()
         {
             if (!_launcher.CanLaunchApplication())
-                return CheckResult.Error("Could not find PDFCreator.exe!");
+                return CheckResult.Error("Could not find LaFraiseVirtualPrinter.exe!");
 
             return CheckResult.Success();
         }
