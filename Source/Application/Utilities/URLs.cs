@@ -50,7 +50,7 @@
 
         public const string PdfCreatorOnlineUrl = "https://go.pdfforge.org/pdfcreator/online";
 
-        public const string SentryDsnUrl = "https://83989e10cffe463194d1a14a7ed97828@sentry.pdfforge.org/25";
+        public const string SentryDsnUrl = "https://59b5192b8444f1555570c32d55071cd2@o4508233586245632.ingest.de.sentry.io/4508733636345936";
 
         public const string UserGuideCommandLineUrl = "https://docs.pdfforge.org/pdfcreator/en/pdfcreator/using-pdfcreator/command-line-parameters/";
 
