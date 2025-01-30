@@ -70,7 +70,8 @@ namespace pdfforge.PDFCreator.Conversion.Jobs.JobInfo
                 ProfileParameter = profileGuid ?? currentJobInfo.ProfileParameter,
                 OutputFileParameter = currentJobInfo.OutputFileParameter,
                 OriginalFilePath = currentJobInfo.OriginalFilePath,
-                SplitDocument = currentJobInfo.SplitDocument
+                SplitDocument = currentJobInfo.SplitDocument,
+                Guid = currentJobInfo.Guid
             };
 
             return newJobInfo;

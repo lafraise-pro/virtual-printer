@@ -34,6 +34,7 @@ namespace pdfforge.PDFCreator.Conversion.Jobs.JobInfo
         public string OutputFileParameter { get; set; }
         public string OriginalFilePath { get; set; }
         public string SplitDocument { get; set; }
+        public Guid Guid { get; set; } = Guid.NewGuid();
 
         private int CalculateTotalPages()
         {
