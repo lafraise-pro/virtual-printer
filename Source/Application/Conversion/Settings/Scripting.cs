@@ -45,36 +45,45 @@ namespace pdfforge.PDFCreator.Conversion.Settings
 		/// Wait until the script execution has ended
 		/// </summary>
 		public bool WaitForScript { get; set; } = true;
-		
-		
-		public void ReadValues(Data data, string path = "")
+
+		public bool WaitForWindowAndFocus { get; set; } = false;
+        public string ExpectedWindowTitleRegex { get; set; } = "";
+
+
+        public void ReadValues(Data data, string path = "")
 		{
 			Enabled = bool.TryParse(data.GetValue(@"" + path + @"Enabled"), out var tmpEnabled) ? tmpEnabled : false;
 			try { ParameterString = Data.UnescapeString(data.GetValue(@"" + path + @"ParameterString")); } catch { ParameterString = "";}
 			try { ScriptFile = Data.UnescapeString(data.GetValue(@"" + path + @"ScriptFile")); } catch { ScriptFile = "";}
 			Visible = bool.TryParse(data.GetValue(@"" + path + @"Visible"), out var tmpVisible) ? tmpVisible : true;
-			WaitForScript = bool.TryParse(data.GetValue(@"" + path + @"WaitForScript"), out var tmpWaitForScript) ? tmpWaitForScript : true;
-		}
-		
-		public void StoreValues(Data data, string path)
+            WaitForScript = bool.TryParse(data.GetValue(@"" + path + @"WaitForScript"), out var tmpWaitForScript) ? tmpWaitForScript : true;
+            WaitForWindowAndFocus = bool.TryParse(data.GetValue(@"" + path + @"WaitForWindowAndFocus"), out var tmpWaitForWindowAndFocus) ? tmpWaitForWindowAndFocus : false;
+            try { ExpectedWindowTitleRegex = Data.UnescapeString(data.GetValue(@"" + path + @"ExpectedWindowTitleRegex")); } catch { ExpectedWindowTitleRegex = ""; }
+        }
+
+        public void StoreValues(Data data, string path)
 		{
 			data.SetValue(@"" + path + @"Enabled", Enabled.ToString());
 			data.SetValue(@"" + path + @"ParameterString", Data.EscapeString(ParameterString));
 			data.SetValue(@"" + path + @"ScriptFile", Data.EscapeString(ScriptFile));
 			data.SetValue(@"" + path + @"Visible", Visible.ToString());
 			data.SetValue(@"" + path + @"WaitForScript", WaitForScript.ToString());
-		}
-		
-		public Scripting Copy()
+            data.SetValue(@"" + path + @"WaitForWindowAndFocus", WaitForWindowAndFocus.ToString());
+            data.SetValue(@"" + path + @"ExpectedWindowTitleRegex", Data.EscapeString(ExpectedWindowTitleRegex));
+        }
+
+        public Scripting Copy()
 		{
 			Scripting copy = new Scripting();
 			
 			copy.Enabled = Enabled;
 			copy.ParameterString = ParameterString;
 			copy.ScriptFile = ScriptFile;
-			copy.Visible = Visible;
-			copy.WaitForScript = WaitForScript;
-			return copy;
+            copy.Visible = Visible;
+            copy.WaitForScript = WaitForScript;
+            copy.WaitForWindowAndFocus = WaitForWindowAndFocus;
+            copy.ExpectedWindowTitleRegex = ExpectedWindowTitleRegex;
+            return copy;
 		}
 		
 		public void ReplaceWith(Scripting source)
@@ -93,10 +102,16 @@ namespace pdfforge.PDFCreator.Conversion.Settings
 				
 			if(WaitForScript != source.WaitForScript)
 				WaitForScript = source.WaitForScript;
-				
-		}
-		
-		public override bool Equals(object o)
+
+            if (WaitForWindowAndFocus != source.WaitForWindowAndFocus)
+                WaitForWindowAndFocus = source.WaitForWindowAndFocus;
+
+            if (ExpectedWindowTitleRegex != source.ExpectedWindowTitleRegex)
+                ExpectedWindowTitleRegex = source.ExpectedWindowTitleRegex;
+
+        }
+
+        public override bool Equals(object o)
 		{
 			if (!(o is Scripting)) return false;
 			Scripting v = o as Scripting;
@@ -104,9 +119,11 @@ namespace pdfforge.PDFCreator.Conversion.Settings
 			if (!Object.Equals(Enabled, v.Enabled)) return false;
 			if (!Object.Equals(ParameterString, v.ParameterString)) return false;
 			if (!Object.Equals(ScriptFile, v.ScriptFile)) return false;
-			if (!Object.Equals(Visible, v.Visible)) return false;
-			if (!Object.Equals(WaitForScript, v.WaitForScript)) return false;
-			return true;
+            if (!Object.Equals(Visible, v.Visible)) return false;
+            if (!Object.Equals(WaitForScript, v.WaitForScript)) return false;
+            if (!Object.Equals(WaitForWindowAndFocus, v.WaitForWindowAndFocus)) return false;
+            if (!Object.Equals(ExpectedWindowTitleRegex, v.ExpectedWindowTitleRegex)) return false;
+            return true;
 		}
 		
 		public override int GetHashCode()
