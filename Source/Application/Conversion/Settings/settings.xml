@@ -783,13 +783,7 @@
           <value name="WaitForScript" type="value" datatype="Bool" enumname="" defaultvalue="true" islist="False">
             <comment>Wait until the script execution has ended</comment>
           </value>
-		  <value name="WaitForWindowAndFocus" type="value" datatype="Bool" enumname="" defaultvalue="false" islist="False">
-			<comment>Waits for a window to appear and focuses on it</comment>
-		  </value>
-		  <value name="ExpectedWindowTitleRegex" type="value" datatype="String" enumname="" defaultvalue="" islist="False">
-			<comment>The regex for the window to wait</comment>
-		  </value>
-		</class>
+        </class>
         <class name="Stamping" propertyName="Stamping" readonly="False" classtype="Class">
           <comment>Place a stamp text on all pages of the document</comment>
           <value name="Color" type="value" datatype="Color" enumname="" defaultvalue="#CCCCCC" islist="False">

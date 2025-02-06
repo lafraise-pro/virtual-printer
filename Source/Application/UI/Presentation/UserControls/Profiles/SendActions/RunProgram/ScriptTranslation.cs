@@ -10,8 +10,6 @@ namespace pdfforge.PDFCreator.UI.Presentation.UserControls.Profiles.SendActions.
         public string ScriptCallPreviewText { get; private set; } = "Call Preview:";
         public string ScriptFileText { get; private set; } = "Program File:";
         public string WaitForScriptText { get; private set; } = "Wait until the program has ended";
-        public string WaitForWindowAndFocusText { get; private set; } = "Wait for window and focus";
-        public string ExpectedWindowTitleRegexText { get; private set; } = "Expected window title regex";
         public override string Title { get; set; } = "Run Program";
 
         public override string InfoText { get; set; } = "Calls a program or script that further processes the document after the conversion. " +

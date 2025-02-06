@@ -57,12 +57,6 @@ namespace pdfforge.PDFCreator.UI.Presentation.UserControls.Profiles.SendActions.
                     .WithTokenReplacerPreview(TokenReplacer)
                     .WithButtonCommand(SelectScriptFileAction)
                     .Build();
-
-                ExpectedWindowTitleRegexViewModel = _tokenViewModelFactory.BuilderWithSelectedProfile()
-                    .WithSelector(p => p.Scripting.ExpectedWindowTitleRegex)
-                    .WithTokenList(tokens)
-                    .WithTokenReplacerPreview(TokenReplacer)
-                    .Build();
             }
         }
 
@@ -81,11 +75,9 @@ namespace pdfforge.PDFCreator.UI.Presentation.UserControls.Profiles.SendActions.
         {
             ParameterTokenViewModel.MountView();
             ScriptFileTokenViewModel.MountView();
-            ExpectedWindowTitleRegexViewModel.MountView();
 
             ParameterTokenViewModel.TextChanged += TokenTextChanged;
             ScriptFileTokenViewModel.TextChanged += TokenTextChanged;
-            ExpectedWindowTitleRegexViewModel.TextChanged += TokenTextChanged;
             TokenTextChanged(this, EventArgs.Empty);
 
             base.MountView();
@@ -95,11 +87,9 @@ namespace pdfforge.PDFCreator.UI.Presentation.UserControls.Profiles.SendActions.
         {
             ParameterTokenViewModel.UnmountView();
             ScriptFileTokenViewModel.UnmountView();
-            ExpectedWindowTitleRegexViewModel.UnmountView();
 
             ParameterTokenViewModel.TextChanged -= TokenTextChanged;
             ScriptFileTokenViewModel.TextChanged -= TokenTextChanged;
-            ExpectedWindowTitleRegexViewModel.TextChanged -= TokenTextChanged;
 
             base.UnmountView();
         }
@@ -128,7 +118,6 @@ namespace pdfforge.PDFCreator.UI.Presentation.UserControls.Profiles.SendActions.
 
         public TokenViewModel<ConversionProfile> ParameterTokenViewModel { get; set; }
 
-        public TokenViewModel<ConversionProfile> ExpectedWindowTitleRegexViewModel { get; set; }
         public TokenReplacer TokenReplacer { get; private set; }
 
         private void TokenTextChanged(object sender, EventArgs eventArgs)
@@ -143,7 +132,6 @@ namespace pdfforge.PDFCreator.UI.Presentation.UserControls.Profiles.SendActions.
 
             ParameterTokenViewModel?.RaiseTextChanged();
             ScriptFileTokenViewModel?.RaiseTextChanged();
-            ExpectedWindowTitleRegexViewModel?.RaiseTextChanged();
             TokenTextChanged(this, EventArgs.Empty);
         }
     }

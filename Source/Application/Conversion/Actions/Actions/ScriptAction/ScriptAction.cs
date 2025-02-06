@@ -10,92 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
 using SystemInterface.Diagnostics;
 using SystemInterface.IO;
-
-namespace Win32Functions
-{
-    public class WindowsUtil
-    {
-        public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
-
-        [DllImport("user32.dll")]
-        public static extern bool SetWindowPos(IntPtr hWnd, int hAfter, int x, int y, int cx, int cy, uint Flags);
-
-        [DllImport("user32.dll")]
-        public static extern bool EnumWindows(EnumWindowsProc enumProc, IntPtr lParam);
-
-        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
-        public static extern IntPtr GetWindowText(IntPtr hWnd, System.Text.StringBuilder text, int count);
-
-        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
-        public static extern int GetWindowTextLength(IntPtr hWnd);
-
-        public static string GetWindowText(IntPtr hWnd)
-        {
-            int size = GetWindowTextLength(hWnd);
-            if (size > 0)
-            {
-                var builder = new StringBuilder(size + 1);
-                GetWindowText(hWnd, builder, builder.Capacity);
-                return builder.ToString();
-            }
-
-            return String.Empty;
-        }
-
-        public static IEnumerable<IntPtr> FindWindows(EnumWindowsProc filter)
-        {
-            IntPtr found = IntPtr.Zero;
-            List<IntPtr> windows = new List<IntPtr>();
-
-            EnumWindows(delegate (IntPtr wnd, IntPtr param)
-            {
-                if (filter(wnd, param))
-                {
-                    windows.Add(wnd);
-                }
-
-                return true;
-            }, IntPtr.Zero);
-
-            return windows;
-        }
-
-        public static IEnumerable<IntPtr> FindWindowsWithText(string titleText)
-        {
-            Regex reg = new Regex(titleText);
-
-            return FindWindows(delegate (IntPtr wnd, IntPtr param)
-            {
-                return reg.Match(GetWindowText(wnd)).Success;
-            });
-        }
-
-        public static void WaitForWindowAndFocus(string titleText)
-        {
-            IEnumerable<IntPtr> wins;
-            int counter = 0;
-
-            do
-            {
-                Thread.Sleep(100);
-                wins = FindWindowsWithText(titleText);
-                counter += 1;
-            } while (wins.Count() == 0 && counter < 100);
-
-            foreach (IntPtr win in wins)
-            {
-                SetWindowPos(win, -1, 0, 0, 0, 0, 3);
-            }
-        }
-    }
-}
-
 
 namespace pdfforge.PDFCreator.Conversion.Actions.Actions
 {
@@ -160,11 +77,6 @@ namespace pdfforge.PDFCreator.Conversion.Actions.Actions
             {
                 _logger.Debug("Launching script...");
                 process.Start();
-
-                if (job.Profile.Scripting.WaitForWindowAndFocus)
-                {
-                    Win32Functions.WindowsUtil.WaitForWindowAndFocus(job.Profile.Scripting.ExpectedWindowTitleRegex);
-                }
 
                 if (job.Profile.Scripting.WaitForScript)
                 {
