@@ -2,13 +2,13 @@
 {
     public class GpoSettingsDefaults : IGpoSettings
     {
-        public bool DisableApplicationSettings => true;
-        public bool DisableDebugTab => true;
+        public bool DisableApplicationSettings => false;
+        public bool DisableDebugTab => false;
         public bool DisablePrinterTab => false;
         public bool DisableProfileManagement => false;
-        public bool DisableTitleTab => true;
+        public bool DisableTitleTab => false;
         public bool DisableHistory => true;
-        public bool DisableAccountsTab => true;
+        public bool DisableAccountsTab => false;
         public bool DisableUsageStatistics => true;
         public bool DisableRssFeed => true;
         public bool DisableTips => true;
