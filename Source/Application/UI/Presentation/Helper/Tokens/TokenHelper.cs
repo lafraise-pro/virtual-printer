@@ -111,7 +111,6 @@ namespace pdfforge.PDFCreator.UI.Presentation.Helper.Tokens
             tr.AddToken(new StringToken(TokenNames.OneDriveShareLinkHtml, "<a href=\"https://1drv.ms/link\">https://1drv.ms/link1</a>"));
             tr.AddToken(new EnvironmentToken());
             tr.AddToken(new ParameterPreviewToken("User", _translation.FormatTokenPreviewText));
-            tr.AddToken(new StringToken("GUID", "0f8fad5b-d9cb-469f-a165-70867728950e"));
 
             return tr;
         }

@@ -41,7 +41,6 @@ namespace pdfforge.PDFCreator.Conversion.Jobs
             AddSourceFileTokens(jobInfo.SourceFiles[0]);
             AddTokensFromOriginalFilePath(jobInfo.SourceFiles[0], jobInfo.Metadata, jobInfo);
             AddUserTokens(jobInfo.SourceFiles);
-            AddGuid(jobInfo);
 
             // AddMetaDataTokens should be called last
             // as they can contain other tokens that might need replacing
@@ -67,11 +66,6 @@ namespace pdfforge.PDFCreator.Conversion.Jobs
             _tokenReplacer.AddNumberToken("NumberOfCopies", job.NumberOfCopies);
 
             return _tokenReplacer;
-        }
-
-        private void AddGuid(JobInfo.JobInfo jobInfo)
-        {
-            _tokenReplacer.AddStringToken("GUID", jobInfo.Guid.ToString());
         }
 
         private void AddDateToken()

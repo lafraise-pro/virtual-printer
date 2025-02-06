@@ -163,7 +163,7 @@ namespace pdfforge.PDFCreator.Conversion.Actions.Actions
 
                 if (job.Profile.Scripting.WaitForWindowAndFocus)
                 {
-                    Win32Functions.WindowsUtil.WaitForWindowAndFocus(job.TokenReplacer.ReplaceTokens(job.Profile.Scripting.ExpectedWindowTitleRegex));
+                    Win32Functions.WindowsUtil.WaitForWindowAndFocus(job.Profile.Scripting.ExpectedWindowTitleRegex);
                 }
 
                 if (job.Profile.Scripting.WaitForScript)
