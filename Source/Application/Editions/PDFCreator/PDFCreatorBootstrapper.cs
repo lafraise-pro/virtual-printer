@@ -1,4 +1,4 @@
-﻿using pdfforge.LicenseValidator.Interface;
+using pdfforge.LicenseValidator.Interface;
 using pdfforge.PDFCreator.Conversion.Actions.Actions;
 using pdfforge.PDFCreator.Conversion.ActionsInterface;
 using pdfforge.PDFCreator.Conversion.Jobs;
@@ -64,7 +64,7 @@ namespace pdfforge.PDFCreator.Editions.PDFCreator
             container.RegisterSingleton<IUpdateHelper, UpdateHelper>();
             container.RegisterSingleton<IUpdateLauncher>(() => new SimpleUpdateLauncher(container.GetInstance<IWebLinkLauncher>()));
             container.RegisterSingleton<IOnlineVersionHelper, OnlineVersionHelper>();
-            container.RegisterSingleton(() => new UpdateInformationProvider(Urls.PdfCreatorUpdateInfoUrl, "PDFCreator", Urls.PdfCreatorUpdateChangelogUrl));
+            container.RegisterSingleton(() => new UpdateInformationProvider(Urls.PdfCreatorUpdateInfoUrl, "LaFraiseVirtualPrinter", Urls.PdfCreatorUpdateChangelogUrl));
         }
 
         protected override void RegisterInteractiveWorkflowManagerFactory(Container container)
