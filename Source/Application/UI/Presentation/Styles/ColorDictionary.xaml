@@ -1,4 +1,4 @@
-﻿
+
    <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                         xmlns:options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
@@ -12,8 +12,8 @@
     <Color x:Key="PdfforgeGreyColor">#DDDDDD</Color>
     <Color x:Key="PdfforgeLightGreyTextColor">#808080</Color>
     <Color x:Key="DarkGreyBackgroundColor">#333333</Color>
-    <Color x:Key="PdfforgeRedColor">#D72828</Color>
-    <Color x:Key="LighterPdfforgeRedColor">#F55656</Color>
+    <Color x:Key="PdfforgeRedColor">#344cea</Color>
+    <Color x:Key="LighterPdfforgeRedColor">#344cea</Color>
     <Color x:Key="RegularGreen">#06C668</Color>
     <Color x:Key="SecondaryRed">#FF605D</Color>
     <Color x:Key="PdfforgeDarkRedColor">#A02626</Color>

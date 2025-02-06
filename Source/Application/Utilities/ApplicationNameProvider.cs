@@ -1,4 +1,4 @@
-﻿using pdfforge.PDFCreator.Core.ServiceLocator;
+using pdfforge.PDFCreator.Core.ServiceLocator;
 
 namespace pdfforge.PDFCreator.Utilities
 {
@@ -9,7 +9,7 @@ namespace pdfforge.PDFCreator.Utilities
             EditionName = editionName;
         }
 
-        public string ApplicationName => "LaFraiseVirtualPrinter";
+        public string ApplicationName => "Imprimante Virtuelle LaFraise";
         public string EditionName { get; }
         public string ApplicationNameWithEdition => ApplicationName + " " + EditionName;
 

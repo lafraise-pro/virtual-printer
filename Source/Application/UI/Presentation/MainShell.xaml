@@ -1,4 +1,4 @@
-﻿<metro:MetroWindow x:Class="pdfforge.PDFCreator.UI.Presentation.MainShell"
+<metro:MetroWindow x:Class="pdfforge.PDFCreator.UI.Presentation.MainShell"
                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
@@ -322,7 +322,7 @@
             <ContentControl Grid.Row="1"
                         regions:RegionManager.RegionName="{x:Static presentation:RegionNames.MainRegion}" />
 
-            <StatusBar Grid.Row="2">
+            <StatusBar Grid.Row="2" Visibility="Collapsed">
                 <StatusBarItem Margin="10 0" Height="24">
                     <StaticResource ResourceKey="pdfforge-white" />
                 </StatusBarItem>

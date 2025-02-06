@@ -1,4 +1,4 @@
-﻿using pdfforge.Obsidian;
+using pdfforge.Obsidian;
 using pdfforge.Obsidian.Trigger;
 using pdfforge.PDFCreator.Conversion.Jobs;
 using pdfforge.PDFCreator.Conversion.Settings.GroupPolicies;
@@ -33,7 +33,7 @@ namespace pdfforge.PDFCreator.UI.Presentation
         private ApplicationNameProvider ApplicationName { get; }
         public IInteractionRequest InteractionRequest { get; }
 
-        public string ApplicationNameAndVersion => ApplicationName.ApplicationNameWithEdition + " " + _versionHelper.FormatWithThreeDigits();
+        public string ApplicationNameAndVersion => ApplicationName.ApplicationName + " " + _versionHelper.FormatWithThreeDigits();
 
         private readonly IEventAggregator _aggregator;
         private readonly IDispatcher _dispatcher;
