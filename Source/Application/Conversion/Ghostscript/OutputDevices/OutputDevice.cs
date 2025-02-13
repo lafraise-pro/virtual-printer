@@ -1,4 +1,4 @@
-﻿using NLog;
+using NLog;
 using pdfforge.PDFCreator.Conversion.Jobs;
 using pdfforge.PDFCreator.Conversion.Jobs.Jobs;
 using pdfforge.PDFCreator.Conversion.Settings.Enums;
@@ -74,6 +74,7 @@ namespace pdfforge.PDFCreator.Conversion.Ghostscript.OutputDevices
 
             parameters.Add("-dNOPAUSE");
             parameters.Add("-dBATCH");
+            parameters.Add("-dNOSAFER");
 
             if (!outputFormatHelper.HasValidExtension(Job.OutputFileTemplate, Job.Profile.OutputFormat))
                 outputFormatHelper.EnsureValidExtension(Job.OutputFileTemplate, Job.Profile.OutputFormat);
